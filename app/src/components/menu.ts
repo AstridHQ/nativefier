@@ -213,25 +213,6 @@ export function createMenu({
     ],
   };
 
-  const helpMenu: MenuItemConstructorOptions = {
-    label: '&Help',
-    role: 'help',
-    submenu: [
-      {
-        label: `Built with Nativefier v${nativefierVersion}`,
-        click: () => {
-          shell.openExternal('https://github.com/jiahaog/nativefier');
-        },
-      },
-      {
-        label: 'Report an Issue',
-        click: () => {
-          shell.openExternal('https://github.com/jiahaog/nativefier/issues');
-        },
-      },
-    ],
-  };
-
   let menuTemplate: MenuItemConstructorOptions[];
 
   if (process.platform === 'darwin') {
@@ -279,9 +260,9 @@ export function createMenu({
         role: 'front',
       },
     );
-    menuTemplate = [electronMenu, editMenu, viewMenu, windowMenu, helpMenu];
+    menuTemplate = [electronMenu, editMenu, viewMenu, windowMenu];
   } else {
-    menuTemplate = [editMenu, viewMenu, windowMenu, helpMenu];
+    menuTemplate = [editMenu, viewMenu, windowMenu];
   }
 
   const menu = Menu.buildFromTemplate(menuTemplate);
